@@ -94,7 +94,7 @@ class DataExchange extends Backend
 			$objCSV->headerFields = $arrHeader;
 		}
 
-        $objCSV->seperator = $objConfig->exportCSVSeparator == "tab" ? "\t" : $objConfig->exportCSVSeparator;
+		$objCSV->seperator = $objConfig->exportCSVSeparator == "tab" ? "\t" : $objConfig->exportCSVSeparator;
 		$objCSV->excel = $objConfig->exportCSVExcel;
 		$objCSV->content = $arrData;
 		
