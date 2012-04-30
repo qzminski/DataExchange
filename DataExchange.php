@@ -42,6 +42,7 @@ class DataExchange extends Backend
 			$this->redirect('contao/main.php?act=error');
 		}
 		
+		$this->import('String');
 		$this->loadDataContainer($objConfig->tableName);
 
 		$objCSV = new CsvWriter();
@@ -56,12 +57,15 @@ class DataExchange extends Backend
 			{
 				if ($arrField['dcaField'] != '')
 				{
-					$arrFieldData[] = $this->formatValue($objConfig->tableName, $arrField['dcaField'], $arrField['value']);
+					$strValue = $this->formatValue($objConfig->tableName, $arrField['dcaField'], $arrField['value']);
 				}
 				else
 				{
-					$arrFieldData[] = $arrField['value'];
+					$strValue = $arrField['value'];
 				}
+				
+				// Decode special entities (e.g. brackets), Contao automatically encodes them in the database
+				$arrFieldData[] = $this->String->decodeEntities($strValue);
 			}
 			
 			$arrData[] = $arrFieldData;
