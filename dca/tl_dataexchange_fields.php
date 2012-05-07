@@ -135,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_dataexchange_fields'] = array
 			'exclude'				=> true,
 			'search'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('maxlength'=>255, 'tl_class'=>'clr long'),
+			'eval'					=> array('decodeEntities'=>true, 'tl_class'=>'clr', 'style'=>'height:60px'),
 			'save_callback' => array
 			(
 				array('tl_dataexchange_fields', 'validateQuery'),

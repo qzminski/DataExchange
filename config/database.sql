@@ -42,7 +42,7 @@ CREATE TABLE `tl_dataexchange_fields` (
   `tstamp` int(10) unsigned NOT NULL default '0',
   `dcaField` varchar(255) NOT NULL default '',
   `label` varchar(255) NOT NULL default '',
-  `fieldQuery` varchar(255) NOT NULL default '',
+  `fieldQuery` text NULL,
   `useFilter` char(1) NOT NULL default '',
   `enabled` char(1) NOT NULL default '',
   PRIMARY KEY  (`id`),
