@@ -1,33 +1,34 @@
 {
-    "name": "lindesbs/dataexchange",
-    "type": "contao-module",
-    "description": "A DataExchange extension for the Contao CMS",
-    "keywords": ["contao", "dataexchange", "data exchange"],
-    "license": "LGPLv3",
-    "authors": [
-        {
-            "name": "Stefan Lindecke",
-            "email": "lindesbs@googlemail.com"
-        },
-        {
-            "name": "Andreas Schempp"
-        },
-        {
-            "name": "Hannes (xchs)"
-        }
-    ],
-    "require": {
-        "php": ">=5.2",
-        "leounglaub/contao-csvwriter": "dev-master"
-    },
-    "autoload": {
-        "classmap": ["./"]
-    },
-    "extra": {
-        "contao": {
-            "symlinks": {
-                "./": "system/modules/dataexchange"
-            }
-        }
-    }
+	"name": "lindesbs/dataexchange",
+	"type": "contao-module",
+	"description": "A DataExchange extension for the Contao CMS",
+	"keywords": ["contao", "dataexchange", "data exchange"],
+	"license": "LGPLv3",
+	"authors": [
+		{
+			"name": "Stefan Lindecke",
+			"email": "lindesbs@googlemail.com"
+		},
+		{
+			"name": "Andreas Schempp",
+			"email": "andreas.schempp@terminal42.ch"
+		},
+		{
+			"name": "Hannes (xchs)"
+		}
+	],
+	"require": {
+		"php": ">=5.2",
+		"leounglaub/contao-csvwriter": "dev-master"
+	},
+	"autoload": {
+		"classmap": ["./"]
+	},
+	"extra": {
+		"contao": {
+			"symlinks": {
+				"./": "system/modules/dataexchange"
+			}
+		}
+	}
 }
