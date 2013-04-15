@@ -335,6 +335,10 @@ class DataExchange extends Backend
 	 */
 	public function loadDataContainerHook($strName)
 	{
+    	if (!$this->Database->tableExists('tl_dataexchange_config')) {
+        	return;
+    	}
+
 		$arrOperations = array();
 		$objDBExport   = $this->Database->prepare("SELECT * FROM tl_dataexchange_config WHERE tableName=? AND addExportInDCA='1'")->execute($strName);
 
