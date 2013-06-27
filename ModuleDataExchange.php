@@ -84,21 +84,17 @@ class ModuleDataExchange extends Module
 
 		$count = 0;
 		$total = $objConfig->numRows;
-		$arrLinks = array();
+		$arrConfigs = array();
 
 		// Generate links
 		while ($objConfig->next())
 		{
-			$arrLinks[$objConfig->id] = array
-			(
-				'class' => trim(((++$count == 1) ? ' first' : '') . (($count == $total) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even')),
-				'href' => ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id,
-				'title' => specialchars($objConfig->name),
-				'link' => $objConfig->name
-			);
+			$arrConfigs[$objConfig->id] = $objConfig->row();
+			$arrConfigs[$objConfig->id]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count == $total) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
+			$arrConfigs[$objConfig->id]['href'] = ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id;
 		}
 
-		$this->Template->links = $arrLinks;
+		$this->Template->configs = $arrConfigs;
 
 		// Run the export
 		if ($this->Input->get('export') != '' && isset($arrLinks[$this->Input->get('export')]))

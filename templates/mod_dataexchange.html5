@@ -6,10 +6,10 @@
     <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
   <?php endif; ?>
 
-  <?php if ($this->links): ?>
+  <?php if ($this->configs): ?>
   <ul>
-  <?php foreach ($this->links as $link): ?>
-    <li class="<?php echo $link['class']; ?>"><a href="<?php echo $link['href']; ?>" title="<?php echo $link['title']; ?>"><?php echo $link['link']; ?></a></li>
+  <?php foreach ($this->configs as $config): ?>
+    <li class="<?php echo $config['class']; ?>"><a href="<?php echo $config['href']; ?>" title="<?php echo specialchars($config['name']); ?>"><?php echo $config['name']; ?></a></li>
   <?php endforeach; ?>
   </ul>
   <?php endif; ?>
