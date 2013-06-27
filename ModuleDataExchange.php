@@ -82,6 +82,8 @@ class ModuleDataExchange extends Module
 			return;
 		}
 
+		$count = 0;
+		$total = $objConfig->numRows;
 		$arrLinks = array();
 
 		// Generate links
@@ -89,6 +91,7 @@ class ModuleDataExchange extends Module
 		{
 			$arrLinks[$objConfig->id] = array
 			(
+				'class' => trim(((++$count == 1) ? ' first' : '') . (($count == $total) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even')),
 				'href' => ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id,
 				'title' => specialchars($objConfig->name),
 				'link' => $objConfig->name
