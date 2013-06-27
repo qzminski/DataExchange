@@ -87,9 +87,12 @@ class ModuleDataExchange extends Module
 		// Generate links
 		while ($objConfig->next())
 		{
-			$arrLinks[$objConfig->id] = sprintf('<a href="%s" title="%s">%s</a>',
-												 ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id,
-												 specialchars($objConfig->name), $objConfig->name);
+			$arrLinks[$objConfig->id] = array
+			(
+				'href' => ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id,
+				'title' => specialchars($objConfig->name),
+				'link' => $objConfig->name
+			);
 		}
 
 		$this->Template->links = $arrLinks;
