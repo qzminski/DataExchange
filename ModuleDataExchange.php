@@ -82,6 +82,7 @@ class ModuleDataExchange extends Module
 			return;
 		}
 
+		$export = (int) $this->Input->get('export');
 		$count = 0;
 		$total = $objConfig->numRows;
 		$arrConfigs = array();
@@ -92,15 +93,15 @@ class ModuleDataExchange extends Module
 			$arrConfigs[$objConfig->id] = $objConfig->row();
 			$arrConfigs[$objConfig->id]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count == $total) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
 			$arrConfigs[$objConfig->id]['href'] = ampersand($this->Environment->request) . ((strpos($this->Environment->request, '?') !== false) ? '&amp;' : '?') . 'export=' . $objConfig->id;
+			
+			// Run the export
+			if ($export == $objConfig->id)
+			{
+				$this->import('DataExchange');
+				$this->DataExchange->exportTable($export, true);
+			}
 		}
 
 		$this->Template->configs = $arrConfigs;
-
-		// Run the export
-		if ($this->Input->get('export') != '' && isset($arrLinks[$this->Input->get('export')]))
-		{
-			$this->import('DataExchange');
-			$this->DataExchange->exportTable($this->Input->get('export'), true);
-		}
 	}
 }
